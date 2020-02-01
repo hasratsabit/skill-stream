@@ -1,0 +1,35 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">Navbar</a>
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="['/auth/signin']">Signin</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="['/auth/signup']">Signup</a>
+      </li>
+    </ul>
+  </nav>
+
+  <button (click)="logThis()">Log Click</button>
+  <button (click)="reset()">Reset</button>
+
+  <form [formGroup]="myForm">
+    <input type="text" formControlName="username" placeholder="username">
+    <input type="text" formControlName="password" placeholder="password">
+    <select formControlName="role">
+      <option [ngValue]="null" selected>Role</option>
+      <option>Admin</option>
+      <option>User</option>
+    </select>
+    <select formControlName="status">
+      <option [selected]="statusReseted">Status</option>
+      <option>Active</option>
+      <option>Inactive</option>
+    </select>
+  </form>
+
+<router-outlet></router-outlet>
+

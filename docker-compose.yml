@@ -1,0 +1,23 @@
+version: '3'
+services: 
+  webapp:
+    build: 
+      dockerfile: Dockerfile.dev
+      context: ./webapp
+    volumes: 
+      - /app/node_module
+      - ./webapp:/app
+    ports: 
+      - '4200:4200'
+    command: ["npm", "run", "start"]
+  api:
+    restart: always
+    build: 
+      dockerfile: Dockerfile.dev
+      context: ./server
+    volumes: 
+      - /app/node_module
+      - ./server/:/app
+    ports: 
+      - '8080:8080'
+    command: ["npm", "run", "start:dev"]
